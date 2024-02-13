@@ -28,6 +28,7 @@ public class Show extends Application {
         String message = "HELLO WORLD";
 
         qrCode code = coder(message);
+        String path = "file:./res/";
 
         stage.setTitle("QR Code");
         Group group = new Group();
@@ -40,13 +41,13 @@ public class Show extends Application {
         stage.setResizable(false);
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
-        Image image = new Image("0.png", cote, cote, false, false);
+        Image image = new Image(path + "0.png", cote, cote, false, false);
         gc.drawImage(image, 0, 0);
 
         for (int i = 0; i < format; i++) {
             for (int j = 0; j < format; j++) {
                 String name = code.get(i, j) + ".png";
-                Image module = new Image(name, pixel, pixel, false, false);
+                Image module = new Image(path + name, pixel, pixel, false, false);
                 gc.drawImage(module, (j + 4)*pixel, (i + 4)*pixel);
             }
         }
